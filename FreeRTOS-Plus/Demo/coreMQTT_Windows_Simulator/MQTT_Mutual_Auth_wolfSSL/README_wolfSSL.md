@@ -8,7 +8,7 @@ A single FreeRTOS task acts as both an MQTT subscriber and an MQTT publisher, se
 
 By double-clicking the solution file named "**mqtt_mutual_auth_demo_wolfSSL.sln**" included in this folder, Visual Studio starts and shows you a project in its solution explorer. It is named "RTOSDemo" and provides a console application program which runs on windows. 
 
-All required settings for wolfSSL have been set in the user_settings.h header file included in the RTOSDemo folder in the solution explorer pane. To make this demo work, following information are required to be set.
+All required settings for wolfSSL have been set in the user_settings.h header file included in the RTOSDemo folder in the solution explorer pane. For this demo to work, you need to set the following information:
 
 1. choose interface to use
 2. set MQTT broker endpoint URL
@@ -18,12 +18,12 @@ All required settings for wolfSSL have been set in the user_settings.h header fi
 
 
 # Choose an interface to use
-You should choose an interface to use to configure the demo. However you might not know how to choose it. The demo will give you a good guidance. Just follow the steps below.
+You should choose an interface to use to configure the demo. However you may not know how to choose it. The demo will give you  good guidance. Follow the steps below.
 
 1. Build the RTOSDemo project
 2. Run the RTOSDemo.exe 
 
-You will see a console that pops up, and it shows output like the following:
+A console that pops up appears with output similar to the following:
 ```
 The following network interfaces are available:
 
@@ -42,8 +42,9 @@ interfaces are supported.
 HALTING
 ```
 <br>
-This output gives you a guidance and interface list availabe on your system. Open ***FreeRTOSConfig.h*** file in the same folder where this readme file locates, then set the interface number you choose to   ***configNETWORK_INTERFACE_TO_USE*** .
-Then rebuild the demo and run it. You will see the interface is set and works this time. 
+
+This output provides guidance and a list of interfaces available on the system. Open the **FreeRTOSConfig.h** file in the same folder where this readme file located, and set the selected interface number to   ***configNETWORK_INTERFACE_TO_USE*** .
+Then rebuild and run the demo. This time you can see that the interface is set up and working. 
 <br><br>
 
 ```
@@ -67,7 +68,12 @@ vDHCPProcess: offer 192.168.1.6
 6 600 [MQTTDemo] [INFO] [MQTT-wolfSSL] [prvMQTTDemoTask:356] Creating a TLS connection to ...insert here...:8883.
 vAssertCalled( ***\FreeRTOS\FreeRTOS-Plus\Demo\coreMQTT_Windows_Simulator\MQTT_Mutual_Auth_wolfSSL\DemoTasks\MutualAuthMQTTExample.c, 457
 ```
-The demo stops by assertion. "Creating a TLS connection to **...insert here...**:8883" is the last log. 
+<br>
+
+The demo stops by assertion. The log saying "Creating a TLS connection to **...insert here...**:8883" has a hint. 
+
+<br>
+
 
 # Set Credentials
 
@@ -78,13 +84,13 @@ Please remember you need to provide the remaining information to complete the de
 - **democonfigCLIENT_CERTIFICATE_PEM**
 - **democonfigCLIENT_PRIVATE_KEY_PEM**
 
-All have **"...insert here..."** as their defined value. This is the casuse of the assertion that stopped the demo. In the file, "...insert here..." is used as a place holder. Therefore, you need to give the correct value for each. You will find information how and what to set for each definition around the definitions. 
+All have **"...insert here..."** as their defined value. This is the casuse of the assertion that stopped the demo. In the file, "...insert here..." is used as a placeholder. Therefore, you need to specify the correct value for each. Immediately above them, there is information on how and what to set for each definitions. 
 
-Please refer the [coreMQTT Demo(Mutual Authentication)](https://www.freertos.org/mqtt/mutual-authentication-mqtt-example.html) page to get helpful information. 
+Please refer the [coreMQTT Demo(Mutual Authentication)](https://www.freertos.org/mqtt/mutual-authentication-mqtt-example.html) page to get more information. 
 If you completes above settings, re-build demo and run it.
 
 # Demo output
-Below is the output digest when a Aws MQTT IoT endpoint and appropriate credentials are set. You can find "**Hello World!**" message was published and received as a topic. 
+Below is the output digest when a Aws MQTT IoT endpoint and appropriate credentials are set. You can find "**Hello World!**" message was published and received as a topic repeatedly. 
 
 ```
 ...
